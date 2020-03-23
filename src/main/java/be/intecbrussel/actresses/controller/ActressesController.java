@@ -23,7 +23,6 @@ public class ActressesController {
         this.actressesService = actressesService;
     }
 
-    // Whats the difference between "ResponseEntity" and "ResponseEntity<List<Actresses>>" ??
     @GetMapping(value = "/allActresses")
     public ResponseEntity<List<Actresses>> getAllActresses(){
         return ResponseEntity.ok(actressesService.getAllActresses());
@@ -38,7 +37,6 @@ public class ActressesController {
             someList.add(actressesService.getRandomDirector());
             return ResponseEntity.ok(someList.toString());
         } catch (NoActresFoundException e) {
-             //Waarom mag ik de printstacktrace niet doen ?
             e.printStackTrace();
             return ResponseEntity.notFound().build();
         }
@@ -50,7 +48,6 @@ public class ActressesController {
         return ResponseEntity.ok().build();
     }
 
-    // Can I use requestparam and requestbody, can I use them both ?
     @PutMapping (value = "/updateActres")
     public ResponseEntity updateActres(@RequestParam(value = "actresId", required = false, defaultValue = "1") Integer id,
                                        @RequestParam(value = "actresName", required = false, defaultValue = "noName") String name,
